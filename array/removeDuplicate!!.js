@@ -6,7 +6,6 @@ Return k after placing the final result in the first k slots of nums.
 
 Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory*/
 
-
 /*
 Example 1:
 
@@ -26,4 +25,15 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 
 //solution
 
-
+function removeDuplicates(nums) {
+  let k = 0; // Pointer for the position of valid elements
+  for (let i = 0; i < nums.length; i++) {
+    // If k < 2, always allow the number to be placed
+    // If the current number is not the same as nums[k-2], allow it to be placed
+    if (k < 2 || nums[i] !== nums[k - 2]) {
+      nums[k] = nums[i]; // Place the valid number in the position 'k'
+      k++;
+    }
+  }
+  return k; // k is the count of valid numbers in the array
+}

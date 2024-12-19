@@ -22,18 +22,25 @@ Explanation: Your function should return k = 7, with the first seven elements of
 It does not matter what you leave beyond the returned k (hence they are underscores).
 
 */
-
 //solution
 
+// Dry Run
+
+// [1,1,1,2,2,3] => [1,1,1,2,2,3]
+
 function removeDuplicates(nums) {
-  let k = 0; // Pointer for the position of valid elements
+  let k = 0;
   for (let i = 0; i < nums.length; i++) {
-    // If k < 2, always allow the number to be placed
-    // If the current number is not the same as nums[k-2], allow it to be placed
+    console.log("k :", k);
     if (k < 2 || nums[i] !== nums[k - 2]) {
-      nums[k] = nums[i]; // Place the valid number in the position 'k'
+      console.log("nums", nums);
+      nums[k] = nums[i];
       k++;
     }
   }
-  return k; // k is the count of valid numbers in the array
+  console.log(nums);
+  return k;
 }
+
+let nums = [1, 1, 1, 2, 2, 3];
+console.log(removeDuplicates(nums));

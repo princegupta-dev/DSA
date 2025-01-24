@@ -27,27 +27,50 @@ The input is generated such that answer[i] is guaranteed to fit in a 32-bit inte
 Follow up: Can you solve the problem in O(1) extra space complexity? (The output array does not count as extra space for space complexity analysis.)
 */
 
+// function productExceptSelf(nums) {
+//brute force solution
+//   let arr = [];
+//   for (let i = 0; i < nums.length; i++) {
+//     let res = 1;
+//     for (let j = 0; j < nums.length; j++) {
+//       if (i === j) {
+//         res = res * 1;
+//       } else {
+//         res = res * nums[j];
+//       }
+//     }
+//     if (res === -0) {
+//       res = 0;
+//     }
+//     arr.push(res);
+//     res = 1;
+//   }
+//   return arr;
+// }
 function productExceptSelf(nums) {
-  //brute force solution
-  //   let arr = [];
-  //   for (let i = 0; i < nums.length; i++) {
-  //     let res = 1;
-  //     for (let j = 0; j < nums.length; j++) {
-  //       if (i === j) {
-  //         res = res * 1;
-  //       } else {
-  //         res = res * nums[j];
-  //       }
-  //     }
-  //     if (res === -0) {
-  //       res = 0;
-  //     }
-  //     arr.push(res);
-  //     res = 1;
-  //   }
-  //   return arr;
-  //optimized solution
+  const n = nums.length;
+  const answer = new Array(n).fill(1);
+
+  // Calculate prefix products and store in answer array
+  let prefix = 1;
+  for (let i = 0; i < n; i++) {
+    answer[i] = prefix;
+    prefix *= nums[i];
+  }
+
+  // Calculate suffix products and multiply directly into answer array
+  let suffix = 1;
+  for (let i = n - 1; i >= 0; i--) {
+    answer[i] *= suffix;
+    suffix *= nums[i];
+  }
+
+  return answer;
 }
 
-console.log(productExceptSelf([-1, 1, 0, -3, 3]));
-console.log(productExceptSelf([1, 2, 3, 4]));
+// Test Cases
+console.log(productExceptSelf([1, 2, 3, 4])); // Output: [24, 12, 8, 6]
+console.log(productExceptSelf([-1, 1, 0, -3, 3])); // Output: [0, 0, 9, 0, 0]
+
+// console.log(productExceptSelf([-1, 1, 0, -3, 3]));
+// console.log(productExceptSelf([1, 2, 3, 4]));

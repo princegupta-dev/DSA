@@ -28,7 +28,6 @@ Constraints:
 
 function containsNearbyDuplicate(nums, k) {
   let obj = {};
-  let res = 0;
   for (let i = 0; i < nums.length; i++) {
     if (nums[i] in obj && Math.abs(i - obj[nums[i]] <= k)) {
       return true;

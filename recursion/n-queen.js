@@ -1,3 +1,5 @@
+debugger;
+
 function solveNQueens(n) {
   const result = [];
 

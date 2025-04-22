@@ -1,3 +1,5 @@
+debugger;
+
 function printSubsets(arr) {
   const result = [];
   function backtrack(index, current) {

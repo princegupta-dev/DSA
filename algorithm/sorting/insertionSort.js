@@ -12,4 +12,13 @@ function insertionSort(arr) {
   return arr;
 }
 
-console.log(insertionSort([4, 2, 1, 3, 5]));
+console.log(insertionSort([29, 10, 14, 37, 13]));
+
+/*
+pass 1->
+i=1-n -> 10-13
+key = 10;
+j = 29;  -> 0
+
+
+*/

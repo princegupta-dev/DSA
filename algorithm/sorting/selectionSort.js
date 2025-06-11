@@ -12,4 +12,4 @@ function selectionSort(arr) {
   return arr;
 }
 
-console.log(selectionSort([4, 2, 1, 3, 5]));
+console.log(selectionSort([29, 10, 14, 37, 13]));

@@ -25,9 +25,11 @@ class Graph {
   }
 }
 
-const g = new Graph();
-g.addEdge("A", "B");
-g.addEdge("A", "C");
-g.addEdge("B", "D");
+// const g = new Graph();
+// g.addEdge("A", "B");
+// g.addEdge("A", "C");
+// g.addEdge("B", "D");
 
-g.print();
+// g.print();
+
+module.exports = { Graph };

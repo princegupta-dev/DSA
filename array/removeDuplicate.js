@@ -34,7 +34,7 @@ function removeDuplicates(nums) {
       nums[slow] = nums[fast];
     }
   }
-  return slow+1;
+  return nums.slice(0, slow + 1);
 }
 
 let nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];

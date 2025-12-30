@@ -11,6 +11,7 @@ let n = 4;
 let ch = 'A';
 let counter = 0;
 for (let i = 0; i < n; i++) {
+
     let row = "";
     for (let j = 0; j < n; j++) {
         row += String.fromCharCode(65 + counter);

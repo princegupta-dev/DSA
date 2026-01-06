@@ -9,6 +9,7 @@ function maxsubArray(arr) {
     }
   }
 }
+// The core idea is to iterate through the array once, keeping track of the maximum sum
 
 let arr = [1, 2, 3, 4, 5];
 // console.log(maxsubArray(arr));

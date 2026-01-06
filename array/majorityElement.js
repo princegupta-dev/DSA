@@ -12,26 +12,26 @@ Input: nums = [2,2,1,1,1,2,2]
 Output: 2
 */
 
-//solution
+//solution`
 
-//normal approach
-// function majorityElement(nums) {
-//   let obj = {};
-//   let count = 0;
-//   for (let i = 0; i < nums.length; i++) {
-//     if (!obj[nums[i]]) {
-//       obj[nums[i]] = count;
-//     }
-//     obj[nums[i]]++;
-//   }
-//   // console.log(obj);
-// }
-
-//Boyer-Moore Voting Algorithm
 function majorityElement(nums) {
+  const obj = {};
+  for (let i = 0; i < nums.length; i++) {
+    obj[nums[i]] = (obj[nums[i]] || 0) + 1;
+  }
+  return nums.find((num) => obj[num] >= Math.floor(nums.length / 2));
+}
+
+let nums = [2, 2, 1, 1, 1, 1, 2, 2, 1, 2];
+// console.log(majorityElement(nums));
+
+// Find the element that appears more than ⌊n/2⌋ times in an array.
+// Pair different elements and cancel them out
+// The element left at the end (if any) is the majority candidate
+
+function majorityElementWithMoore(nums) {
   let count = 0;
   let candidate = null;
-
   for (let num of nums) {
     if (count === 0) {
       candidate = num;
@@ -40,4 +40,5 @@ function majorityElement(nums) {
   }
   return candidate;
 }
-console.log(majorityElement([3, 2, 3]));
+
+console.log(majorityElementWithMoore(nums));

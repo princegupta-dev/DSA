@@ -1,26 +1,39 @@
 debugger;
 
-function printSubsets(arr) {
-  const result = [];
-  function backtrack(index, current) {
-    if (index === arr.length) {
-      result.push([...current]);
-      return;
-    }
-    // Include the current element
-    current.push(arr[index]);
-    backtrack(index + 1, current);
-    // Exclude the current element
-    current.pop();
-    backtrack(index + 1, current);
+function printSubsets(arr, ans, i) {
+  if (i === arr.length) {
+    console.log(ans.join(" "));
+    return;
   }
-  backtrack(0, []);
-  return result;
+
+  ans.push(arr[i]);
+  printSubsets(arr, ans, i + 1);
+
+  ans.pop();
+  printSubsets(arr, ans, i + 1);
+}
+function ps(arr) {
+  const n = arr.length;
+  const size = 1 << n;
+  for (let mask = 0; mask < size; mask++) {
+    let subset = [];
+
+    for (let i = 0; i < n; i++) {
+      console.log(mask & (1 << i));
+      if (mask & (1 << i)) {
+        subset.push(arr[i]);
+      }
+    }
+    console.log(subset);
+  }
 }
 
 const arr = [1, 2, 3];
-const subsets = printSubsets(arr);
-console.log(subsets);
+let ans = [];
+// const subsets = printSubsets(arr);
+console.log(printSubsets(arr, ans, 0));
+
+// console.log(subsets);
 
 /*
 [

@@ -5,6 +5,7 @@ function solveNQueens(n) {
 
   // Board will hold current state of the board
   const board = Array.from({ length: n }, () => ".".repeat(n));
+  console.log(board);
 
   // Track columns and diagonals to avoid placing queens there
   const cols = new Set(); // columns where queens are placed

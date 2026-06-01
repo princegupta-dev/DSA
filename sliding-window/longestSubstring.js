@@ -23,27 +23,53 @@ Constraints:
 s consists of English letters, digits, symbols and spaces.
 
 */
-function lengthOfLongestSubstring(s, k) {
-  let left = 0;
-  let freq = new Map();
-  let maxLen = 0;
+// function lengthOfLongestSubstring(s, k) {
+//   let left = 0;
+//   let freq = new Map();
+//   let maxLen = 0;
 
-  for (let right = 0; right < s.length; right++) {
-    freq.set(s[right], (freq.get(s[right]) || 0) + 1);
-    while (freq.size > k) {
-      freq.set(s[left], freq.get(s[left]) - 1);
-      if (freq.get(s[left]) === 0) {
-        freq.delete(s[left]);
-      }
-      left++;
-    }
-    if (freq.size === k) {
-      maxLen = Math.max(maxLen, right - left + 1);
-    }
-  }
-  return maxLen;
-}
+//   for (let right = 0; right < s.length; right++) {
+//     freq.set(s[right], (freq.get(s[right]) || 0) + 1);
+//     while (freq.size > k) {
+//       freq.set(s[left], freq.get(s[left]) - 1);
+//       if (freq.get(s[left]) === 0) {
+//         freq.delete(s[left]);
+//       }
+//       left++;
+//     }
+//     if (freq.size === k) {
+//       maxLen = Math.max(maxLen, right - left + 1);
+//     }
+//   }
+//   return maxLen;
+// }
 
-console.log(lengthOfLongestSubstring("aabacbebebe", 3));
 // console.log(lengthOfLongestSubstring("bbbbb"));
 // console.log(lengthOfLongestSubstring("pwwkew"));
+
+/**
+ * @param {string} s
+ */
+var lengthOfLongestSubstring = function (s) {
+  let left = 0;
+  let maxLen = 0;
+  let map = new Map();
+
+  for (let right = 0; right < s.length; right++) {
+    // Remove characters until duplicate is gone
+    while (map.has(s[right])) {
+      map.delete(s[left]);
+      left++;
+    }
+
+    // Add current character
+    map.set(s[right], true);
+
+    // Update maximum length
+    maxLen = Math.max(maxLen, right - left + 1);
+  }
+
+  return maxLen;
+};
+
+console.log(lengthOfLongestSubstring("aabacbebebe"));

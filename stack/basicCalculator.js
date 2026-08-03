@@ -30,6 +30,7 @@ s represents a valid expression.
 There will be no two consecutive operators in the input.
 Every number and running calculation will fit in a signed 32-bit integer.
 */
+
 function calculate(s) {
   let stack = [];
   let num = 0;
